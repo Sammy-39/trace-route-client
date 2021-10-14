@@ -1,0 +1,12 @@
+.App{
+  margin: 10px;
+  display: grid;
+	place-items: center;
+}
+
+.leaflet-container{
+  width: 100%;
+  height: 90vh;
+  border-radius: 10px;
+  margin-bottom: 6px;
+}
