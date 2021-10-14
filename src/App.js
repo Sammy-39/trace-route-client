@@ -8,6 +8,7 @@ import './App.css';
 const client = mqtt.connect('mqtt://broker.hivemq.com/mqtt', { port:8000 })
 client.on('connect',()=>{
   client.subscribe(`location_updates`)
+  client.subscribe('alert')
 })
 
 const App = () => {
