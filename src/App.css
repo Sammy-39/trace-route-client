@@ -4,9 +4,61 @@
 	place-items: center;
 }
 
-.leaflet-container{
-  width: 100%;
-  height: 90vh;
-  border-radius: 10px;
-  margin-bottom: 6px;
+.leaflet-container {
+    width: 100%;
+    height: 90vh;
+    border-radius: 10px;
+    margin-bottom: 6px;
+}
+
+.leaflet-control-container .leaflet-routing-container-hide {
+  display: none;
+}
+
+.bottom-bar{
+  display: flex;
+  margin-top: 6px;
+  align-items: flex-start;
+}
+
+.btn-loc{
+  display: flex;
+  font-size: 15px;
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+	color: #fff;
+	background: #027ad6;
+  cursor: pointer;
+}
+
+.btn-loc-dis{
+  cursor: default;
+  background: gray;
+}
+
+.loader {
+  border: 2px solid #027ad6; 
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  animation: spin 2s linear infinite;
+  margin-left: 10px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loc-err{
+  background: rgb(161, 76, 76);
+  border-radius: 5px;
+  margin: 0;
+  margin-left: 10px;
+  font-size: 15px;
+  padding: 8px;
+  color: white;
 }

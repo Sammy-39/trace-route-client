@@ -2,7 +2,13 @@ import { useState, useEffect } from 'react'
 import mqtt from 'mqtt'
 
 import Map from './components/map'
+import Loader from './components/loader';
 import './App.css';
+
+const client = mqtt.connect('mqtt://broker.hivemq.com/mqtt', { port:8000 })
+client.on('connect',()=>{
+  client.subscribe(`location_updates`)
+})
 
 const App = () => {
 
@@ -11,11 +17,6 @@ const App = () => {
   const [isError,setIsError] = useState(false)
 
   useEffect(()=>{
-    const client = mqtt.connect('mqtt://broker.hivemq.com/mqtt', { port:8000 })
-    client.on('connect',()=>{
-      client.subscribe(`location_updates`)
-    })
-
     return ()=>client.end()
   },[])
 
