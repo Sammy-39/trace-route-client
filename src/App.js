@@ -28,7 +28,7 @@ const App = () => {
     setIsLoading(true)
     setIsError(false)
     try{
-      const res = await fetch(`http://localhost:5000/api/v1/getLocations`)
+      const res = await fetch(`https://trace-route-server.herokuapp.com/api/v1/getLocations`)
       const data = await res.json()
   
       if(res.status===200 && data.message==='success'){
