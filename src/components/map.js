@@ -1,4 +1,5 @@
 import { MapContainer, Marker, TileLayer, Tooltip } from "react-leaflet";
+import Routing from "./routing";
 
 const Map = ({ locations }) =>{
 
@@ -24,6 +25,7 @@ const Map = ({ locations }) =>{
           </Marker>
         ))
       }
+      <Routing locations={locations} />
     </MapContainer>
   );
 }
