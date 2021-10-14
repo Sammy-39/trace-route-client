@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 import mqtt from 'mqtt'
 
 import Map from './components/map'
 import Loader from './components/loader';
+import ErrorFallback from './components/errorFallback'
 import './App.css';
 
 const client = mqtt.connect('mqtt://broker.hivemq.com/mqtt', { port:8000 })
@@ -49,24 +51,26 @@ const App = () => {
   }
 
   return(
-    <div className='App'>
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <div className='App'>
 
-      <Map locations={locations} />
+        <Map locations={locations} />
 
-      <div className='bottom-bar'>
-        <button 
-          className={`btn-loc ${isLoading && 'btn-loc-dis'}`}
-          onClick={handleGetLocationUpdates}
-          disabled={isLoading}
-        > 
-          Get Location Updates { isLoading && <Loader />}
-        </button>
+        <div className='bottom-bar'>
+          <button 
+            className={`btn-loc ${isLoading && 'btn-loc-dis'}`}
+            onClick={handleGetLocationUpdates}
+            disabled={isLoading}
+          > 
+            Get Location Updates { isLoading && <Loader />}
+          </button>
 
-        { isError && <p className='loc-err'> 
-          Unable to get the location data!
-        </p> }
+          { isError && <p className='loc-err'> 
+            Unable to get the location data!
+          </p> }
+        </div>
       </div>
-    </div>
+    </ErrorBoundary>
   )
 }
 
